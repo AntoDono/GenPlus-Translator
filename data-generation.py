@@ -1,4 +1,5 @@
 import requests
+import tdqm
 import os 
 from dotenv import load_dotenv
 from typing import List
@@ -50,11 +51,27 @@ def generate(prompt: str) -> str | None:
     })
     return res.json().get("response")
 
+def generate_worker(max_vocab: int, turns: int, vocabulary: List, topics: List, return_list: List, pbar = None) -> None:
+    
+    cnt = 0
+    
+    while(cnt < turns):
+        
+        prompt = get_generate_prompt(vocabulary, random.choice(topics), 10)
+        res = generate(prompt)
+        if res == None:
+            continue
+        
+        words_used = vocab_used(vocabulary, res)
+        return_list.append({
+            "sentence": res,
+            "terms": words_used
+        })
+        
+        if pbar != None:
+            pbar.update(1)
+
 if __name__ == "__main__":
-    vocabulary = read_vocab("./vocabulary.json")
-    prompt = get_generate_prompt(vocabulary, "fencing", 10)
-    print(f"Prompt: {prompt}")
-    res = generate(prompt)
-    words_used = vocab_used(vocabulary, res)
-    print(f"Generated: {res}")
-    print(f"Words used: {words_used}")
+    pbar = tdqm(total=3000)
+    
+    
