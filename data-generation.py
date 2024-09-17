@@ -51,7 +51,7 @@ def get_generate_prompt(vocabulary: List, topic: str = "anything", vocab_size: i
 
     return f"""
 Provide one sentence about {topic}, then rewrite the sentence using only a few slang terms from {vocab_string}. 
-Do not provide definitions or explanations. Keep the slang version no longer than one sentence.
+Do not provide definitions or explanations. Keep the slang version no longer than two sentences.
 Example:
 Original: I value my family deeply.
 Translated: Ain't nothing like my fam, they got my back.
