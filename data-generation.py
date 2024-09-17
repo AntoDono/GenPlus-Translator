@@ -43,7 +43,7 @@ def write_json(path: str, data: any) -> None:
 
 def get_generate_prompt(vocabulary: List, topic: str = "anything", vocab_size: int = 1) -> str:
 
-    vocab = random.sample(vocabulary, random.randint(vocab_size/2, vocab_size))
+    vocab = random.sample(vocabulary, random.randint(int(vocab_size/2), vocab_size))
     vocab_string = ""
 
     for term in vocab:
