@@ -70,10 +70,14 @@ def extract_from_generate(raw: str) -> List[str]:
     if "Original" not in raw or "Translated" not in raw:
         return []
     else:
-        res = raw.split("Translated: ")
-        res[0] = res[0].replace("Original: ", "")
-        
-        return [res[0].strip(), res[1].strip()]
+        try:
+            res = raw.split("Translated: ")
+            res[0] = res[0].replace("Original: ", "")
+            
+            return [res[0].strip(), res[1].strip()]
+        except Exception as e:
+            print(e)
+            return []
 
 def generate_worker(max_vocab: int, vocabulary: List, turns: int, topics: List, return_list: List, pbar = None, en_to_slang = True) -> None:
     
