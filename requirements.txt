@@ -3,3 +3,6 @@ requests
 tqdm
 transformers
 peft
+optimum
+auto-gtpq
+torch
