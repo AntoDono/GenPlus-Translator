@@ -6,7 +6,7 @@ import torch
 from data_generation import read_json
 
 random.seed(12345)
-MODEL = "gpt2-large"
+MODEL = "gpt2"
 TEST_SPLIT = 0.2
 device = "cuda:0"
 
@@ -95,8 +95,8 @@ validate_dataset = TranslationDataset(raw_data[:test_split_index])
 training_args = TrainingArguments(
     output_dir="model",
     learning_rate=2e-3,
-    per_device_train_batch_size=8,
-    per_device_eval_batch_size=8,
+    per_device_train_batch_size=16,
+    per_device_eval_batch_size=16,
     num_train_epochs=8,
     weight_decay=0.01,
     evaluation_strategy="epoch",
@@ -114,4 +114,4 @@ trainer = Trainer(
 )
 
 trainer.train()
-model.save_pretrained("./model")
+model.save_pretrained("./adapter")
