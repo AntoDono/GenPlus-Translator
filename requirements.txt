@@ -4,5 +4,5 @@ tqdm
 transformers
 peft
 optimum
-auto-gtpq
+auto_gtpq==0.7.1
 torch

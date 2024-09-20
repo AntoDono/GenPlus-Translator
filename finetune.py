@@ -4,12 +4,16 @@ from typing import List
 import random
 import torch
 from data_generation import read_json
+from dotenv import load_dotenv
+import os
 
-random.seed(12345)
-MODEL = "gpt2"
+load_dotenv()
+
+MODEL = os.getenv("FINETUNE_MODEL")
+device = os.getenv("DEVICE")
+
 TEST_SPLIT = 0.2
-device = "cuda:0"
-
+random.seed(12345)
 torch.cuda.set_device(device)
 
 peft_config = LoraConfig(

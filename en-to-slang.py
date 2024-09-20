@@ -1,8 +1,12 @@
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel, PeftConfig
+from dotenv import load_dotenv
+import os
 
-MODEL = "gpt2"
-device = "cuda:0"
+load_dotenv()
+
+MODEL = os.getenv("FINETUNE_MODEL")
+device = os.getenv("DEVICE")
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
 
