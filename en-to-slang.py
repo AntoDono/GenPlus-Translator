@@ -15,7 +15,6 @@ tokenizer = AutoTokenizer.from_pretrained(MODEL)
 model = AutoModelForCausalLM.from_pretrained(MODEL, max_length=256, device_map=device)
 model = PeftModel.from_pretrained(model, "./adapter", max_length=256).to(device)
 
-
 class StoppingCriteriaSub(StoppingCriteria):
 
     def __init__(self, stops = []):
