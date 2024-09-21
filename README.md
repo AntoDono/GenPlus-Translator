@@ -19,8 +19,9 @@ Gen+ Translator is what can be considered as a distilled model. The definition o
 These 6,000 datasets were then split into half, where half were english to slang and the other were slang to english.
 
 ### Training
-Gen+ Translator is finetuned based on [gpt2-large](https://huggingface.co/openai-community/gpt2-large) and trained on 2x NVIDIA RTX 3090. The model was finetuned using PeFT and Lora to reduce computations.
+**Ver. 1** Gen+ Translator is finetuned based on [gpt2-large](https://huggingface.co/openai-community/gpt2-large) and trained on 2x NVIDIA RTX 3090. The model was finetuned using PeFT and Lora to reduce computations.
 
+**Ver. 2 (current ver)** Gen+ Translator is finetuned based on [quantized-gptq llama2-7b](https://huggingface.co/TheBloke/Llama-2-7B-GPTQ) and trained on 2x NVIDIA RTX 3090. The model was finetuned using PeFT and Lora to reduce computations.
 ### Setup
 1. Create a python virtual environment (optional):
 ```bash

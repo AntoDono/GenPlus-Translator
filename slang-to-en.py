@@ -41,5 +41,5 @@ while True:
         **encoded,
         stopping_criteria=stopping_criteria
     )
-    output = tokenizer.decode(output_ids[0])
+    output = tokenizer.decode(output_ids[0], skip_special_tokens=True)
     print(output)

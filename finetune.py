@@ -16,7 +16,7 @@ torch.cuda.set_device(device)
 print(f"Traning on device: {device}")
 
 TEST_SPLIT = 0.2
-LR=2e-4
+LR=4e-5
 EPOCHS=6
 random.seed(12345)
 
