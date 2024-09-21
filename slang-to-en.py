@@ -2,15 +2,17 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from peft import PeftModel, PeftConfig
 from dotenv import load_dotenv
 import os
+import torch
 
 load_dotenv()
 
 MODEL = os.getenv("FINETUNE_MODEL")
-device = os.getenv("DEVICE")
+device = torch.device(os.getenv("DEVICE"))
+torch.cuda.set_device(device)
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
 
-model = AutoModelForCausalLM.from_pretrained(MODEL, max_length=256)
+model = AutoModelForCausalLM.from_pretrained(MODEL, max_length=256, device_map=device)
 model = PeftModel.from_pretrained(model, "./adapter", max_length=256).to(device)
 
 while True:

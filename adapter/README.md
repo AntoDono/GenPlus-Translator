@@ -1,5 +1,5 @@
 ---
-base_model: gpt2-large
+base_model: TheBloke/Llama-2-7B-GPTQ
 library_name: peft
 ---
 

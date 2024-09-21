@@ -10,29 +10,35 @@ import os
 load_dotenv()
 
 MODEL = os.getenv("FINETUNE_MODEL")
-device = os.getenv("DEVICE")
+device = torch.device(os.getenv("DEVICE"))
+torch.cuda.set_device(device)
+
+print(f"Traning on device: {device}")
 
 TEST_SPLIT = 0.2
+LR=2e-4
+EPOCHS=6
 random.seed(12345)
-torch.cuda.set_device(device)
 
 peft_config = LoraConfig(
     task_type=TaskType.CAUSAL_LM, 
     inference_mode=False, 
-    r=32,
+    r=8,
     lora_alpha=16,
     lora_dropout=0.1,
-    # target_modules=["q_proj", "v_proj"]
-    target_modules=["c_proj", "c_attn"]
+    target_modules=["q_proj", "v_proj"],
 )
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
-tokenizer.pad_token = tokenizer.unk_token
+if not tokenizer.pad_token:
+    print("No pad token, assigned unk token as pad")
+    tokenizer.pad_token = tokenizer.unk_token
 
 model = AutoModelForCausalLM.from_pretrained(MODEL, device_map=device)
-
 model = get_peft_model(model=model, peft_config=peft_config)
+print(model)
 model.print_trainable_parameters()
+
 
 class TranslationDataset(torch.utils.data.Dataset):
 
@@ -70,12 +76,12 @@ class TranslationDataset(torch.utils.data.Dataset):
 
             concatenated = \
                 f"{instruction}\nInput: {translation['original']} \
-                \nOutput: {translation['translated']}\nWords replaced: {', '.join(translation['terms'])}"
+                \nOutput: {translation['translated']}\nWords replaced: {', '.join(translation['terms'])} {tokenizer.eos_token}"
             
             if not en_to_slang:
                 concatenated = \
                     f"{instruction}\nInput: {translation['translated']} \
-                    \nOutput: {translation['original']}\nWords replaced: {', '.join(translation['terms'])}"
+                    \nOutput: {translation['original']}\nWords replaced: {', '.join(translation['terms'])} {tokenizer.eos_token}"
             
             tokenized = tokenizer(concatenated, max_length=256, padding='max_length', truncation=True, return_tensors="pt")
             input_ids.append(tokenized['input_ids'][0])
@@ -98,10 +104,10 @@ validate_dataset = TranslationDataset(raw_data[:test_split_index])
 
 training_args = TrainingArguments(
     output_dir="model",
-    learning_rate=2e-3,
-    per_device_train_batch_size=16,
-    per_device_eval_batch_size=16,
-    num_train_epochs=8,
+    learning_rate=LR,
+    per_device_train_batch_size=2,
+    per_device_eval_batch_size=2,
+    num_train_epochs=EPOCHS,
     weight_decay=0.01,
     evaluation_strategy="epoch",
     save_strategy="epoch",
