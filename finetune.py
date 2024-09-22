@@ -11,34 +11,40 @@ load_dotenv()
 
 MODEL = os.getenv("FINETUNE_MODEL")
 device = torch.device(os.getenv("DEVICE"))
+force_quantization = os.getenv("FORCE_QUANTIZATION").lower() == "true"
 torch.cuda.set_device(device)
 
-print(f"Traning on device: {device}")
+print(f"Training on device: {device}")
 
 TEST_SPLIT = 0.2
 LR=4e-5
 EPOCHS=6
+BATCH_SIZE=4
 random.seed(12345)
 
 peft_config = LoraConfig(
     task_type=TaskType.CAUSAL_LM, 
     inference_mode=False, 
-    r=8,
-    lora_alpha=16,
-    lora_dropout=0.1,
-    target_modules=["q_proj", "v_proj"],
+    r=16,
+    lora_alpha=32,
+    lora_dropout=0.05,
+    target_modules=['q_proj', 'v_proj']
 )
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
 if not tokenizer.pad_token:
     print("No pad token, assigned unk token as pad")
     tokenizer.pad_token = tokenizer.unk_token
-
-model = AutoModelForCausalLM.from_pretrained(MODEL, device_map=device)
-model = get_peft_model(model=model, peft_config=peft_config)
+    
+print("Forced quantization enabled, quantizing...")
+if force_quantization:
+    gptq_config = GPTQConfig(bits=4, dataset="c4-new", tokenizer=tokenizer)
+    model = AutoModelForCausalLM.from_pretrained(MODEL, device_map=device, quantization_config=gptq_config)
+else:
+    model = AutoModelForCausalLM.from_pretrained(MODEL, device_map=device)
 print(model)
+model = get_peft_model(model=model, peft_config=peft_config)
 model.print_trainable_parameters()
-
 
 class TranslationDataset(torch.utils.data.Dataset):
 
@@ -105,10 +111,10 @@ validate_dataset = TranslationDataset(raw_data[:test_split_index])
 training_args = TrainingArguments(
     output_dir="model",
     learning_rate=LR,
-    per_device_train_batch_size=2,
-    per_device_eval_batch_size=2,
+    per_device_train_batch_size=BATCH_SIZE,
+    per_device_eval_batch_size=BATCH_SIZE,
     num_train_epochs=EPOCHS,
-    weight_decay=0.01,
+    weight_decay=0.05,
     evaluation_strategy="epoch",
     save_strategy="epoch",
     fp16=True
