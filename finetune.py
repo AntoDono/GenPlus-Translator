@@ -7,18 +7,19 @@ from data_generation import read_json
 from dotenv import load_dotenv
 import os
 
-load_dotenv()
+load_dotenv(override=True)
 
 MODEL = os.getenv("FINETUNE_MODEL")
+FP16 = os.getenv("FP16").lower() == "true"
 device = torch.device(os.getenv("DEVICE"))
 force_quantization = os.getenv("FORCE_QUANTIZATION").lower() == "true"
 torch.cuda.set_device(device)
 
-print(f"Training on device: {device}")
+print(f"Finetuning model {MODEL} on device: {device}")
 
 TEST_SPLIT = 0.2
-LR=4e-5
-EPOCHS=6
+LR=3e-5
+EPOCHS=4
 BATCH_SIZE=4
 random.seed(12345)
 
@@ -28,18 +29,25 @@ peft_config = LoraConfig(
     r=16,
     lora_alpha=32,
     lora_dropout=0.05,
-    target_modules=['q_proj', 'v_proj']
+    target_modules=[
+    'q_proj',
+    'k_proj',
+    'v_proj'
+    'o_proj'
+    ]
 )
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
 if not tokenizer.pad_token:
-    print("No pad token, assigned unk token as pad")
-    tokenizer.pad_token = tokenizer.unk_token
+    print("No pad token, assigned eos token as pad")
+    tokenizer.pad_token = tokenizer.eos_token
     
-print("Forced quantization enabled, quantizing...")
 if force_quantization:
+    print("Forced quantization enabled, quantizing...")
     gptq_config = GPTQConfig(bits=4, dataset="c4-new", tokenizer=tokenizer)
     model = AutoModelForCausalLM.from_pretrained(MODEL, device_map=device, quantization_config=gptq_config)
+    tokenizer.save_pretrained(f"{MODEL}-4bit-GPTQ")
+    model.save_pretrained(f"{MODEL}-4bit-GPTQ")
 else:
     model = AutoModelForCausalLM.from_pretrained(MODEL, device_map=device)
 print(model)
@@ -66,6 +74,17 @@ class TranslationDataset(torch.utils.data.Dataset):
         self.input_ids += encoded_en_to_slang.get("input_ids") + encoded_slang_to_en.get("input_ids")
         self.labels += encoded_en_to_slang.get("labels") + encoded_slang_to_en.get("labels")
         self.masks += encoded_en_to_slang.get("attention_mask") + encoded_slang_to_en.get("attention_mask")
+        
+        # Zip the input_ids, labels, and masks together for consistent shuffling
+        combined = list(zip(self.input_ids, self.labels, self.masks))
+
+        random.shuffle(combined)
+        
+        self.input_ids, self.labels, self.masks = zip(*combined)
+
+        self.input_ids = list(self.input_ids)
+        self.labels = list(self.labels)
+        self.masks = list(self.masks)
 
     def tokenize_translation(self, data: List, en_to_slang: bool):
         
@@ -103,7 +122,7 @@ class TranslationDataset(torch.utils.data.Dataset):
         return len(self.input_ids)
             
 
-raw_data = read_json("./data/generated-6000.json")
+raw_data = read_json("./data/generated-10000.json")
 test_split_index = int(len(raw_data) * TEST_SPLIT)
 train_dataset = TranslationDataset(raw_data[test_split_index:])
 validate_dataset = TranslationDataset(raw_data[:test_split_index])
@@ -117,7 +136,8 @@ training_args = TrainingArguments(
     weight_decay=0.05,
     evaluation_strategy="epoch",
     save_strategy="epoch",
-    fp16=True
+    load_best_model_at_end=True,
+    fp16=FP16
 )
 
 trainer = Trainer(

@@ -43,7 +43,7 @@ def write_json(path: str, data: any) -> None:
 
 def get_generate_prompt(vocabulary: List, topic: str = "anything", vocab_size: int = 1) -> str:
 
-    vocab = random.sample(vocabulary, random.randint(int(vocab_size/2), vocab_size))
+    vocab = random.sample(vocabulary, random.randint(int(vocab_size/1.2), vocab_size))
     vocab_string = ""
 
     for term in vocab:
@@ -120,7 +120,7 @@ def generate_worker(max_vocab: int, vocabulary: List, turns: int, topics: List, 
 
 if __name__ == "__main__":
 
-    total_datasets = 3000
+    total_datasets = 4000
     generated_data = []
     thread_num = 10
     threads = []

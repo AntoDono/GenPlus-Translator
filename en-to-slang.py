@@ -39,6 +39,9 @@ while True:
         return_tensors="pt").to(device)
     output_ids = model.generate(
         **encoded,
+        top_k=50,
+        temperature=0.5,
+        do_sample=True,
         stopping_criteria=stopping_criteria
     )
     output = tokenizer.decode(output_ids[0], skip_special_tokens=True)
