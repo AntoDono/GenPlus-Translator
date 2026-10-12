@@ -1,8 +1,9 @@
 python-dotenv
-requests
 tqdm
-transformers
-peft
-optimum
-auto_gtpq==0.7.1
+numpy
+openai
 torch
+transformers>=5
+peft
+accelerate
+sacrebleu

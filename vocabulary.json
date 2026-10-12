@@ -1,422 +1,678 @@
 [
   {
-    "word": "Asl",
-    "definition": "Shortened version of 'as hell.'"
+    "word": "Asf",
+    "definition": "Shortened version of 'as fuck.'",
+    "aliases": []
   },
   {
-    "word": "Aura",
-    "definition": "A quantifiable unit of coolness or uncoolness."
+    "word": "Asl",
+    "definition": "Shortened version of 'as hell.'",
+    "aliases": []
   },
   {
     "word": "Ate",
-    "definition": "Expression of admiration for someone's success or performance."
+    "definition": "Expression of admiration for someone's success or performance.",
+    "aliases": []
   },
   {
-    "word": "Asf",
-    "definition": "Shortened version of 'as fuck.'"
+    "word": "Aura",
+    "definition": "A quantifiable unit of coolness or uncoolness.",
+    "aliases": []
+  },
+  {
+    "word": "Aura farming",
+    "definition": "Deliberately acting cool to build up aura.",
+    "aliases": []
   },
   {
     "word": "Banger",
-    "definition": "Something exceptional, impressive, or high-quality, often music."
+    "definition": "Something exceptional, impressive, or high-quality, often music.",
+    "aliases": []
   },
   {
     "word": "Based",
-    "definition": "Agreeable opinion, especially in political discussions."
+    "definition": "Agreeable opinion, especially in political discussions.",
+    "aliases": []
   },
   {
     "word": "Basic",
-    "definition": "Preferring mainstream products, trends, and music."
+    "definition": "Preferring mainstream products, trends, and music.",
+    "aliases": []
   },
   {
     "word": "BDE",
-    "definition": "Big dick energy; exuding confidence and ease."
+    "definition": "Big dick energy; exuding confidence and ease.",
+    "aliases": []
   },
   {
     "word": "Bestie",
-    "definition": "Short for 'best friend', sometimes used jokingly."
+    "definition": "Short for 'best friend', sometimes used jokingly.",
+    "aliases": [
+      "besties"
+    ]
   },
   {
     "word": "Bet",
-    "definition": "Yes, okay, or 'it's on.'"
+    "definition": "Yes, okay, or 'it's on.'",
+    "aliases": []
   },
   {
     "word": "Bffr",
-    "definition": "Be fucking for real; expressing disbelief or seriousness."
+    "definition": "Be fucking for real; expressing disbelief or seriousness.",
+    "aliases": []
   },
   {
     "word": "Big yikes",
-    "definition": "Describing something embarrassing or cringey."
+    "definition": "Describing something embarrassing or cringey.",
+    "aliases": []
   },
   {
     "word": "Blud",
-    "definition": "Another word for friend or bro, often describing out-of-place people or animals."
+    "definition": "Another word for friend or bro, often describing out-of-place people or animals.",
+    "aliases": []
   },
   {
     "word": "Boujee",
-    "definition": "High-class or materialistic."
+    "definition": "High-class or materialistic.",
+    "aliases": []
   },
   {
     "word": "Bouncing on it",
-    "definition": "Over-praising or 'glazing' someone, similar to 'dickriding'."
+    "definition": "Over-praising or 'glazing' someone, similar to 'dickriding'.",
+    "aliases": []
   },
   {
     "word": "Brainrot",
-    "definition": "Losing touch with reality due to consuming meaningless online content."
+    "definition": "Losing touch with reality due to consuming meaningless online content.",
+    "aliases": []
   },
   {
     "word": "Bruh",
-    "definition": "Expressing shock, embarrassment, or disappointment."
+    "definition": "Expressing shock, embarrassment, or disappointment.",
+    "aliases": []
   },
   {
     "word": "Bussin'",
-    "definition": "Extremely good or excellent, often describing food."
+    "definition": "Extremely good or excellent, often describing food.",
+    "aliases": [
+      "bussin",
+      "bussing"
+    ]
   },
   {
     "word": "Bussy",
-    "definition": "Portmanteau of 'Boy' and 'Pussy', referring to a man's anus."
+    "definition": "Portmanteau of 'Boy' and 'Pussy', referring to a man's anus.",
+    "aliases": []
   },
   {
     "word": "Cap",
-    "definition": "To lie or accuse someone of lying."
+    "definition": "To lie or accuse someone of lying.",
+    "aliases": [
+      "no cap",
+      "capping",
+      "cappin"
+    ]
   },
   {
     "word": "Caught in 4K",
-    "definition": "Being indisputably caught doing something wrong."
+    "definition": "Being indisputably caught doing something wrong.",
+    "aliases": []
   },
   {
-    "word": "Cook",
-    "definition": "To prepare or initiate a situation with intent."
-  },
-  {
-    "word": "Cooked",
-    "definition": "Being in a state of danger or failure."
+    "word": "Chopped",
+    "definition": "Ugly or unattractive.",
+    "aliases": []
   },
   {
     "word": "Clapback",
-    "definition": "Swift and witty response to an insult or critique."
+    "definition": "Swift and witty response to an insult or critique.",
+    "aliases": []
+  },
+  {
+    "word": "Cook",
+    "definition": "To prepare or initiate a situation with intent.",
+    "aliases": [
+      "let him cook",
+      "let her cook",
+      "cooking"
+    ]
+  },
+  {
+    "word": "Cooked",
+    "definition": "Being in a state of danger or failure.",
+    "aliases": []
+  },
+  {
+    "word": "Crash out",
+    "definition": "To lose control and react recklessly after getting upset.",
+    "aliases": [
+      "crashing out",
+      "crashed out",
+      "crashout"
+    ]
   },
   {
     "word": "Dab",
-    "definition": "A dance move used as a gesture of triumph."
+    "definition": "A dance move used as a gesture of triumph.",
+    "aliases": []
+  },
+  {
+    "word": "Deadass",
+    "definition": "Seriously or for real; stressing that you are not joking.",
+    "aliases": []
   },
   {
     "word": "Ded",
-    "definition": "Describing something extremely humorous."
+    "definition": "Describing something extremely humorous.",
+    "aliases": [
+      "im ded",
+      "i'm ded"
+    ]
   },
   {
     "word": "Delulu",
-    "definition": "Holding unrealistic or overly idealistic beliefs."
+    "definition": "Holding unrealistic or overly idealistic beliefs.",
+    "aliases": []
   },
   {
     "word": "Dogs",
-    "definition": "Slang term for toes."
+    "definition": "Slang term for toes.",
+    "aliases": []
   },
   {
     "word": "Drip",
-    "definition": "Trendy, high-class fashion."
+    "definition": "Trendy, high-class fashion.",
+    "aliases": []
   },
   {
     "word": "Era",
-    "definition": "Term for one's current interests or priorities."
+    "definition": "Term for one's current interests or priorities.",
+    "aliases": []
   },
   {
     "word": "Extra",
-    "definition": "Over-the-top or excessive in behavior or appearance."
+    "definition": "Over-the-top or excessive in behavior or appearance.",
+    "aliases": []
   },
   {
     "word": "Fanum tax",
-    "definition": "The theft of food between friends."
+    "definition": "The theft of food between friends.",
+    "aliases": []
+  },
+  {
+    "word": "Finna",
+    "definition": "Going to or about to do something.",
+    "aliases": []
   },
   {
     "word": "Fire",
-    "definition": "Impressive, good, or cool."
+    "definition": "Impressive, good, or cool.",
+    "aliases": []
   },
   {
     "word": "Fit",
-    "definition": "Highlighting one's outfit or a shortened version of 'outfit.'"
+    "definition": "Highlighting one's outfit or a shortened version of 'outfit.'",
+    "aliases": []
   },
   {
     "word": "Flex",
-    "definition": "Showcasing achievements or possessions to demonstrate superiority."
+    "definition": "Showcasing achievements or possessions to demonstrate superiority.",
+    "aliases": [
+      "flexing",
+      "flexed"
+    ]
+  },
+  {
+    "word": "Fr",
+    "definition": "For real; emphasizing sincerity or agreement.",
+    "aliases": [
+      "frfr",
+      "fr fr"
+    ]
   },
   {
     "word": "Gagged",
-    "definition": "Being shocked, amazed, or at a loss for words."
-  },
-  {
-    "word": "Girlboss",
-    "definition": "A successful female entrepreneur in a male-dominated field."
+    "definition": "Being shocked, amazed, or at a loss for words.",
+    "aliases": []
   },
   {
     "word": "Ghost",
-    "definition": "Ending communication without warning."
+    "definition": "Ending communication without warning.",
+    "aliases": [
+      "ghosted",
+      "ghosting"
+    ]
+  },
+  {
+    "word": "Girlboss",
+    "definition": "A successful female entrepreneur in a male-dominated field.",
+    "aliases": []
   },
   {
     "word": "Glaze",
-    "definition": "Over-hyping or praising someone to an annoying degree."
-  },
-  {
-    "word": "Glow-up",
-    "definition": "A major improvement in appearance, confidence, or style."
-  },
-  {
-    "word": "GOAT",
-    "definition": "Greatest of all time."
-  },
-  {
-    "word": "Gucci",
-    "definition": "Good, cool, fashionable, or excellent."
-  },
-  {
-    "word": "Gyatt",
-    "definition": "Short for 'God Damn', often referring to a curvy woman's buttocks."
+    "definition": "Over-hyping or praising someone to an annoying degree.",
+    "aliases": [
+      "glazing",
+      "glazed",
+      "glazer"
+    ]
   },
   {
     "word": "Glizzy",
-    "definition": "A hot dog."
+    "definition": "A hot dog.",
+    "aliases": []
+  },
+  {
+    "word": "Glow-up",
+    "definition": "A major improvement in appearance, confidence, or style.",
+    "aliases": [
+      "glow up",
+      "glowed up"
+    ]
+  },
+  {
+    "word": "GOAT",
+    "definition": "Greatest of all time.",
+    "aliases": [
+      "goated"
+    ]
+  },
+  {
+    "word": "Gucci",
+    "definition": "Good, cool, fashionable, or excellent.",
+    "aliases": []
+  },
+  {
+    "word": "Gyatt",
+    "definition": "Short for 'God Damn', often referring to a curvy woman's buttocks.",
+    "aliases": []
+  },
+  {
+    "word": "Highkey",
+    "definition": "Very much or openly; the opposite of lowkey.",
+    "aliases": [
+      "high key"
+    ]
   },
   {
     "word": "Hits different",
-    "definition": "Something that is better in a peculiar manner."
-  },
-  {
-    "word": "Ick",
-    "definition": "Sudden feeling of disgust towards a dating partner."
-  },
-  {
-    "word": "IJBOL",
-    "definition": "I just burst out laughing."
+    "definition": "Something that is better in a peculiar manner.",
+    "aliases": [
+      "hit different",
+      "hitting different"
+    ]
   },
   {
     "word": "I oop",
-    "definition": "Expressing shock, embarrassment, or amusement."
+    "definition": "Expressing shock, embarrassment, or amusement.",
+    "aliases": []
+  },
+  {
+    "word": "Ick",
+    "definition": "Sudden feeling of disgust towards a dating partner.",
+    "aliases": []
+  },
+  {
+    "word": "IJBOL",
+    "definition": "I just burst out laughing.",
+    "aliases": []
   },
   {
     "word": "iPad kid",
-    "definition": "Derogatory term for children constantly using tablets or phones."
+    "definition": "Derogatory term for children constantly using tablets or phones.",
+    "aliases": []
   },
   {
     "word": "It's giving",
-    "definition": "Describing the attitude or connotation of something."
+    "definition": "Describing the attitude or connotation of something.",
+    "aliases": []
   },
   {
     "word": "Iykyk",
-    "definition": "If you know, you know; referring to inside jokes."
+    "definition": "If you know, you know; referring to inside jokes.",
+    "aliases": []
   },
   {
     "word": "Jit",
-    "definition": "A younger, inexperienced person; often used as an insult."
+    "definition": "A younger, inexperienced person; often used as an insult.",
+    "aliases": [
+      "jits"
+    ]
   },
   {
     "word": "Karen",
-    "definition": "Pejorative term for an entitled, obnoxious woman."
+    "definition": "Pejorative term for an entitled, obnoxious woman.",
+    "aliases": []
   },
   {
     "word": "Lit",
-    "definition": "Exciting, enjoyable, or excellent."
+    "definition": "Exciting, enjoyable, or excellent.",
+    "aliases": []
   },
   {
     "word": "Looksmaxxing",
-    "definition": "Attempts to maximize physical attractiveness, often pseudoscientific."
+    "definition": "Attempts to maximize physical attractiveness, often pseudoscientific.",
+    "aliases": []
+  },
+  {
+    "word": "Lowkey",
+    "definition": "Somewhat, secretly, or quietly; downplaying a statement.",
+    "aliases": [
+      "low key"
+    ]
   },
   {
     "word": "Main character",
-    "definition": "Someone who acts as if they're the star of their own life."
+    "definition": "Someone who acts as if they're the star of their own life.",
+    "aliases": [
+      "main character energy"
+    ]
   },
   {
     "word": "Mew",
-    "definition": "Pseudoscientific method to reshape jawline by tongue positioning."
+    "definition": "Pseudoscientific method to reshape jawline by tongue positioning.",
+    "aliases": [
+      "mewing"
+    ]
   },
   {
     "word": "Mid",
-    "definition": "Average or unimpressive, sometimes used negatively."
+    "definition": "Average or unimpressive, sometimes used negatively.",
+    "aliases": []
+  },
+  {
+    "word": "Mog",
+    "definition": "To outshine someone, especially in looks.",
+    "aliases": [
+      "mogging",
+      "mogged",
+      "mogs"
+    ]
   },
   {
     "word": "Moot",
-    "definition": "Short for 'mutuals' or mutual followers."
+    "definition": "Short for 'mutuals' or mutual followers.",
+    "aliases": [
+      "moots"
+    ]
   },
   {
     "word": "Netflix and chill",
-    "definition": "Invitation for casual sexual activity under the guise of watching Netflix."
+    "definition": "Invitation for casual sexual activity under the guise of watching Netflix.",
+    "aliases": []
+  },
+  {
+    "word": "Ngl",
+    "definition": "Not gonna lie; introducing an honest opinion.",
+    "aliases": []
   },
   {
     "word": "NPC",
-    "definition": "Someone perceived as unthinking or blindly following popular opinion."
+    "definition": "Someone perceived as unthinking or blindly following popular opinion.",
+    "aliases": []
   },
   {
     "word": "Nyaa",
-    "definition": "Cute cat noise, often used ironically."
+    "definition": "Cute cat noise, often used ironically.",
+    "aliases": []
   },
   {
     "word": "Ohio",
-    "definition": "Slang for strange, weird, cringe, or dumb."
+    "definition": "Slang for strange, weird, cringe, or dumb.",
+    "aliases": []
   },
   {
     "word": "OK Boomer",
-    "definition": "Dismissive response to outdated attitudes associated with Baby Boomers."
+    "definition": "Dismissive response to outdated attitudes associated with Baby Boomers.",
+    "aliases": []
   },
   {
-    "word": "Oomf",
-    "definition": "One of my followers."
+    "word": "Ong",
+    "definition": "On God; swearing that something is true.",
+    "aliases": []
   },
   {
     "word": "Oof",
-    "definition": "Expressing discomfort, surprise, or sympathy."
+    "definition": "Expressing discomfort, surprise, or sympathy.",
+    "aliases": []
+  },
+  {
+    "word": "Oomf",
+    "definition": "One of my followers.",
+    "aliases": []
   },
   {
     "word": "Opp",
-    "definition": "Short for opposition or enemies."
+    "definition": "Short for opposition or enemies.",
+    "aliases": [
+      "opps"
+    ]
   },
   {
     "word": "Out of pocket",
-    "definition": "Extremely wild, crazy, or inappropriate."
+    "definition": "Extremely wild, crazy, or inappropriate.",
+    "aliases": []
   },
   {
     "word": "Owned",
-    "definition": "Decisively defeated or dominated, especially in gaming."
+    "definition": "Decisively defeated or dominated, especially in gaming.",
+    "aliases": []
   },
   {
     "word": "Periodt",
-    "definition": "Emphatic way of ending a statement, similar to 'period.'"
+    "definition": "Emphatic way of ending a statement, similar to 'period.'",
+    "aliases": []
   },
   {
     "word": "Pick-me",
-    "definition": "Someone seeking validation by putting down others in their group."
+    "definition": "Someone seeking validation by putting down others in their group.",
+    "aliases": []
   },
   {
     "word": "Pluh",
-    "definition": "Conversation stopper when there's nothing left to say."
+    "definition": "Conversation stopper when there's nothing left to say.",
+    "aliases": []
   },
   {
     "word": "Pookie",
-    "definition": "Endearing nickname for a close friend or lover."
+    "definition": "Endearing nickname for a close friend or lover.",
+    "aliases": [
+      "pookie bear"
+    ]
   },
   {
     "word": "Queen",
-    "definition": "A person (usually female) deemed impressive or praiseworthy."
+    "definition": "A person (usually female) deemed impressive or praiseworthy.",
+    "aliases": []
   },
   {
     "word": "Ratio",
-    "definition": "When a reply outperforms the original post in engagement."
+    "definition": "When a reply outperforms the original post in engagement.",
+    "aliases": [
+      "ratioed"
+    ]
   },
   {
     "word": "Red flag",
-    "definition": "Warning sign of potentially harmful behavior in a relationship."
+    "definition": "Warning sign of potentially harmful behavior in a relationship.",
+    "aliases": []
+  },
+  {
+    "word": "Rent free",
+    "definition": "When something occupies your thoughts constantly without effort.",
+    "aliases": []
   },
   {
     "word": "Rizz",
-    "definition": "One's charm or seduction skills."
+    "definition": "One's charm or seduction skills.",
+    "aliases": [
+      "rizzed",
+      "rizzler",
+      "rizzing"
+    ]
   },
   {
     "word": "Roman Empire",
-    "definition": "Something that frequently occupies one's thoughts."
+    "definition": "Something that frequently occupies one's thoughts.",
+    "aliases": []
   },
   {
     "word": "Salty",
-    "definition": "Bitter, resentful, or irritated."
+    "definition": "Bitter, resentful, or irritated.",
+    "aliases": []
   },
   {
     "word": "Secure the bag",
-    "definition": "Achieving goals, especially financial ones."
+    "definition": "Achieving goals, especially financial ones.",
+    "aliases": []
   },
   {
     "word": "Sheesh",
-    "definition": "Expressing admiration or disbelief."
+    "definition": "Expressing admiration or disbelief.",
+    "aliases": []
   },
   {
     "word": "Shook",
-    "definition": "Shocked, surprised, or bothered."
+    "definition": "Shocked, surprised, or bothered.",
+    "aliases": []
   },
   {
     "word": "Sigma",
-    "definition": "An independent male perceived to be at the top of the social hierarchy."
+    "definition": "An independent male perceived to be at the top of the social hierarchy.",
+    "aliases": []
   },
   {
     "word": "Simp",
-    "definition": "Someone overly attentive or submissive, especially for romantic interest."
+    "definition": "Someone overly attentive or submissive, especially for romantic interest.",
+    "aliases": [
+      "simping",
+      "simps"
+    ]
   },
   {
     "word": "Situationship",
-    "definition": "An ambiguous romantic relationship without clear definition."
-  },
-  {
-    "word": "Sksksk",
-    "definition": "Expressing amusement or laughter."
+    "definition": "An ambiguous romantic relationship without clear definition.",
+    "aliases": []
   },
   {
     "word": "Skibidi",
-    "definition": "Nonce word used for comedic or exaggerating effect."
+    "definition": "Nonce word used for comedic or exaggerating effect.",
+    "aliases": []
+  },
+  {
+    "word": "Sksksk",
+    "definition": "Expressing amusement or laughter.",
+    "aliases": []
   },
   {
     "word": "Slaps",
-    "definition": "Describing something as very good, particularly music."
+    "definition": "Describing something as very good, particularly music.",
+    "aliases": []
   },
   {
     "word": "Slay",
-    "definition": "To do something exceptionally well."
+    "definition": "To do something exceptionally well.",
+    "aliases": [
+      "slayed",
+      "slaying",
+      "slays"
+    ]
   },
   {
     "word": "Sleep on",
-    "definition": "To underestimate or overlook something valuable."
+    "definition": "To underestimate or overlook something valuable.",
+    "aliases": [
+      "sleeping on",
+      "slept on"
+    ]
   },
   {
     "word": "Snatched",
-    "definition": "Looking exceptionally good or stylish."
+    "definition": "Looking exceptionally good or stylish.",
+    "aliases": []
   },
   {
     "word": "Stan",
-    "definition": "An overzealous or obsessive fan."
+    "definition": "An overzealous or obsessive fan.",
+    "aliases": [
+      "stanning",
+      "stans"
+    ]
   },
   {
     "word": "Sus",
-    "definition": "Suspicious or suspect."
+    "definition": "Suspicious or suspect.",
+    "aliases": []
   },
   {
     "word": "Tea",
-    "definition": "Gossip or drama."
+    "definition": "Gossip or drama.",
+    "aliases": []
   },
   {
     "word": "Touch grass",
-    "definition": "Telling someone to go outside and connect with reality."
+    "definition": "Telling someone to go outside and connect with reality.",
+    "aliases": [
+      "touching grass"
+    ]
   },
   {
     "word": "Tweaking",
-    "definition": "Acting strangely or feeling like you're hallucinating."
+    "definition": "Acting strangely or feeling like you're hallucinating.",
+    "aliases": [
+      "tweakin"
+    ]
   },
   {
     "word": "Understood the assignment",
-    "definition": "To comprehend and execute a task successfully."
+    "definition": "To comprehend and execute a task successfully.",
+    "aliases": [
+      "understands the assignment"
+    ]
   },
   {
     "word": "UwU",
-    "definition": "Expressing happiness or cuteness, often used ironically."
+    "definition": "Expressing happiness or cuteness, often used ironically.",
+    "aliases": []
   },
   {
     "word": "Valid",
-    "definition": "Acceptable or worthy of approval."
+    "definition": "Acceptable or worthy of approval.",
+    "aliases": []
   },
   {
     "word": "Vibe check",
-    "definition": "Assessing someone's personality or attitude."
+    "definition": "Assessing someone's personality or attitude.",
+    "aliases": []
   },
   {
     "word": "VSCO girl",
-    "definition": "Stereotype of a trendy, basic white girl who posts edited photos online."
+    "definition": "Stereotype of a trendy, basic white girl who posts edited photos online.",
+    "aliases": []
   },
   {
     "word": "Wig",
-    "definition": "Doing something so well it's as if your wig flew off."
+    "definition": "Doing something so well it's as if your wig flew off.",
+    "aliases": []
   },
   {
     "word": "Yap",
-    "definition": "To talk excessively or meaninglessly."
+    "definition": "To talk excessively or meaninglessly.",
+    "aliases": [
+      "yapping",
+      "yapper"
+    ]
   },
   {
     "word": "Yeet",
-    "definition": "To throw forcefully; also a general exclamation."
+    "definition": "To throw forcefully; also a general exclamation.",
+    "aliases": [
+      "yeeted"
+    ]
   },
   {
     "word": "Zesty",
-    "definition": "Flamboyantly provocative"
+    "definition": "Flamboyantly provocative",
+    "aliases": []
   }
 ]

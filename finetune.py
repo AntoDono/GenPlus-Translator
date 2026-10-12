@@ -1,153 +1,131 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments, Trainer, GPTQConfig, GenerationConfig
-from peft import LoraConfig, TaskType, get_peft_model
-from typing import List
-import random
-import torch
-from data_generation import read_json
-from dotenv import load_dotenv
+"""LoRA fine-tune on data/{train,val}.jsonl (built by `data_generation.py build`).
+
+Works for base models without a chat template (GPT-2) and instruct models with one.
+Loss is computed only on the response tokens, never on the prompt or padding.
+
+    python finetune.py                     # BASE_MODEL from .env
+    python finetune.py --epochs 3 --lr 2e-4
+"""
+import argparse
 import os
+import random
+
+import torch
+from dotenv import load_dotenv
+from peft import LoraConfig, TaskType, get_peft_model
+from transformers import AutoModelForCausalLM, AutoTokenizer, Trainer, TrainingArguments
+
+from common import build_prompt, read_jsonl
 
 load_dotenv(override=True)
 
-MODEL = os.getenv("FINETUNE_MODEL")
-FP16 = os.getenv("FP16").lower() == "true"
-device = torch.device(os.getenv("DEVICE"))
-force_quantization = os.getenv("FORCE_QUANTIZATION").lower() == "true"
-torch.cuda.set_device(device)
+parser = argparse.ArgumentParser()
+parser.add_argument("--model", default=os.getenv("BASE_MODEL", "gpt2-large"))
+parser.add_argument("--device", default=os.getenv("DEVICE", "cuda:0"))
+parser.add_argument("--epochs", type=float, default=3)
+parser.add_argument("--lr", type=float, default=2e-4)
+parser.add_argument("--batch-size", type=int, default=16)
+parser.add_argument("--max-length", type=int, default=256)
+parser.add_argument("--rank", type=int, default=32)
+parser.add_argument("--eval-steps", type=int, default=200)
+parser.add_argument("--output", default="./adapter")
+args = parser.parse_args()
 
-print(f"Finetuning model {MODEL} on device: {device}")
-
-TEST_SPLIT = 0.2
-LR=3e-5
-EPOCHS=4
-BATCH_SIZE=4
 random.seed(12345)
+torch.manual_seed(12345)
+device = torch.device(args.device)
+torch.cuda.set_device(device)
+print(f"Fine-tuning {args.model} on {device} ({torch.cuda.get_device_name(device)})")
+
+tokenizer = AutoTokenizer.from_pretrained(args.model)
+if tokenizer.pad_token is None:
+    tokenizer.pad_token = tokenizer.eos_token
+
+model = AutoModelForCausalLM.from_pretrained(args.model, dtype=torch.bfloat16, device_map={"": device})
+model.gradient_checkpointing_enable()
+model.enable_input_require_grads()
 
 peft_config = LoraConfig(
-    task_type=TaskType.CAUSAL_LM, 
-    inference_mode=False, 
-    r=16,
-    lora_alpha=32,
+    task_type=TaskType.CAUSAL_LM,
+    r=args.rank,
+    lora_alpha=args.rank * 2,
     lora_dropout=0.05,
-    target_modules=[
-    'q_proj',
-    'k_proj',
-    'v_proj'
-    'o_proj'
-    ]
+    target_modules="all-linear",  # q/k/v/o + MLP (c_attn/c_proj/c_fc on GPT-2)
 )
-
-tokenizer = AutoTokenizer.from_pretrained(MODEL)
-if not tokenizer.pad_token:
-    print("No pad token, assigned eos token as pad")
-    tokenizer.pad_token = tokenizer.eos_token
-    
-if force_quantization:
-    print("Forced quantization enabled, quantizing...")
-    gptq_config = GPTQConfig(bits=4, dataset="c4-new", tokenizer=tokenizer)
-    model = AutoModelForCausalLM.from_pretrained(MODEL, device_map=device, quantization_config=gptq_config)
-    tokenizer.save_pretrained(f"{MODEL}-4bit-GPTQ")
-    model.save_pretrained(f"{MODEL}-4bit-GPTQ")
-else:
-    model = AutoModelForCausalLM.from_pretrained(MODEL, device_map=device)
-print(model)
-model = get_peft_model(model=model, peft_config=peft_config)
+model = get_peft_model(model, peft_config)
 model.print_trainable_parameters()
 
-class TranslationDataset(torch.utils.data.Dataset):
 
-    def __init__(self, data: List):
+class SFTDataset(torch.utils.data.Dataset):
 
-        self.input_ids = []
-        self.labels = []
-        self.masks = []
+    def __init__(self, rows):
+        self.examples = []
+        skipped = 0
+        for row in rows:
+            prompt_ids = tokenizer(build_prompt(row["task"], row["input"], tokenizer), add_special_tokens=False)["input_ids"]
+            answer_ids = tokenizer(row["output"], add_special_tokens=False)["input_ids"] + [tokenizer.eos_token_id]
+            if len(prompt_ids) + len(answer_ids) > args.max_length:
+                skipped += 1
+                continue
+            self.examples.append(dict(
+                input_ids=prompt_ids + answer_ids,
+                labels=[-100] * len(prompt_ids) + answer_ids,
+            ))
+        if skipped:
+            print(f"Skipped {skipped} examples longer than {args.max_length} tokens")
 
-        half = int(len(data)/2)
-        random.shuffle(data)
+    def __getitem__(self, i):
+        return self.examples[i]
 
-        en_to_slang = data[:half]
-        slang_to_en = data[half:]
-        
-        encoded_en_to_slang = self.tokenize_translation(data=en_to_slang, en_to_slang=True)
-        encoded_slang_to_en = self.tokenize_translation(data=slang_to_en, en_to_slang=False)
-        
-        self.input_ids += encoded_en_to_slang.get("input_ids") + encoded_slang_to_en.get("input_ids")
-        self.labels += encoded_en_to_slang.get("labels") + encoded_slang_to_en.get("labels")
-        self.masks += encoded_en_to_slang.get("attention_mask") + encoded_slang_to_en.get("attention_mask")
-        
-        # Zip the input_ids, labels, and masks together for consistent shuffling
-        combined = list(zip(self.input_ids, self.labels, self.masks))
-
-        random.shuffle(combined)
-        
-        self.input_ids, self.labels, self.masks = zip(*combined)
-
-        self.input_ids = list(self.input_ids)
-        self.labels = list(self.labels)
-        self.masks = list(self.masks)
-
-    def tokenize_translation(self, data: List, en_to_slang: bool):
-        
-        input_ids = []
-        labels = []
-        masks = []
-        
-        instruction = "Rewrite the following english sentence to slang and identify the words replaced."
-
-        if not en_to_slang:
-            instruction = "Rewrite the following slang sentence to english and identify the words replaced."
-
-        for translation in data:
-
-            concatenated = \
-                f"{instruction}\nInput: {translation['original']} \
-                \nOutput: {translation['translated']}\nWords replaced: {', '.join(translation['terms'])} {tokenizer.eos_token}"
-            
-            if not en_to_slang:
-                concatenated = \
-                    f"{instruction}\nInput: {translation['translated']} \
-                    \nOutput: {translation['original']}\nWords replaced: {', '.join(translation['terms'])} {tokenizer.eos_token}"
-            
-            tokenized = tokenizer(concatenated, max_length=256, padding='max_length', truncation=True, return_tensors="pt")
-            input_ids.append(tokenized['input_ids'][0])
-            labels.append(tokenized['input_ids'][0])
-            masks.append(tokenized['attention_mask'][0])
-            
-        return dict(input_ids=input_ids, labels=labels, attention_mask=masks)
-
-    def __getitem__(self, id):
-        return dict(input_ids=self.input_ids[id], labels=self.labels[id], attention_mask=self.masks[id])
-    
     def __len__(self):
-        return len(self.input_ids)
-            
+        return len(self.examples)
 
-raw_data = read_json("./data/generated-10000.json")
-test_split_index = int(len(raw_data) * TEST_SPLIT)
-train_dataset = TranslationDataset(raw_data[test_split_index:])
-validate_dataset = TranslationDataset(raw_data[:test_split_index])
+
+def collate(batch):
+    width = max(len(b["input_ids"]) for b in batch)
+    input_ids, labels, mask = [], [], []
+    for b in batch:
+        pad = width - len(b["input_ids"])
+        input_ids.append(b["input_ids"] + [tokenizer.pad_token_id] * pad)
+        labels.append(b["labels"] + [-100] * pad)
+        mask.append([1] * len(b["input_ids"]) + [0] * pad)
+    return dict(input_ids=torch.tensor(input_ids), labels=torch.tensor(labels), attention_mask=torch.tensor(mask))
+
+
+train_dataset = SFTDataset(read_jsonl("./data/train.jsonl"))
+val_dataset = SFTDataset(read_jsonl("./data/val.jsonl"))
+print(f"train: {len(train_dataset)}  val: {len(val_dataset)}")
 
 training_args = TrainingArguments(
-    output_dir="model",
-    learning_rate=LR,
-    per_device_train_batch_size=BATCH_SIZE,
-    per_device_eval_batch_size=BATCH_SIZE,
-    num_train_epochs=EPOCHS,
-    weight_decay=0.05,
-    evaluation_strategy="epoch",
-    save_strategy="epoch",
+    output_dir="./runs",
+    learning_rate=args.lr,
+    lr_scheduler_type="cosine",
+    warmup_steps=0.03,  # ratio of total steps
+    per_device_train_batch_size=args.batch_size,
+    per_device_eval_batch_size=args.batch_size,
+    num_train_epochs=args.epochs,
+    weight_decay=0.0,
+    bf16=True,
+    eval_strategy="steps",
+    eval_steps=args.eval_steps,
+    save_strategy="steps",
+    save_steps=args.eval_steps,
+    save_total_limit=2,
     load_best_model_at_end=True,
-    fp16=FP16
+    metric_for_best_model="eval_loss",
+    logging_steps=25,
+    report_to="none",
+    remove_unused_columns=False,
 )
 
 trainer = Trainer(
     model=model,
     args=training_args,
     train_dataset=train_dataset,
-    eval_dataset=validate_dataset,
-    # data_collator=data_collator,
-    # compute_metrics=compute_metrics,
+    eval_dataset=val_dataset,
+    data_collator=collate,
 )
-
 trainer.train()
-model.save_pretrained("./adapter")
+model.save_pretrained(args.output)
+tokenizer.save_pretrained(args.output)
+print(f"Saved adapter to {args.output}")
