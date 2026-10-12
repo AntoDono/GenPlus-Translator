@@ -1,5 +1,14 @@
 [
   {
+    "word": "6-7",
+    "definition": "A meaningless meme phrase (said 'six-seven'), often with a hands-weighing gesture, used to troll people who don't get it.",
+    "aliases": [
+      "67",
+      "six seven",
+      "six-seven"
+    ]
+  },
+  {
     "word": "Asf",
     "definition": "Shortened version of 'as fuck.'",
     "aliases": []
@@ -17,7 +26,9 @@
   {
     "word": "Aura",
     "definition": "A quantifiable unit of coolness or uncoolness.",
-    "aliases": []
+    "aliases": [
+      "aura points"
+    ]
   },
   {
     "word": "Aura farming",
@@ -25,9 +36,28 @@
     "aliases": []
   },
   {
+    "word": "Baddie",
+    "definition": "A confident, stylish, attractive woman.",
+    "aliases": [
+      "baddies"
+    ]
+  },
+  {
+    "word": "Ball knowledge",
+    "definition": "Niche or obscure knowledge about a topic, especially pop culture or sports.",
+    "aliases": []
+  },
+  {
     "word": "Banger",
     "definition": "Something exceptional, impressive, or high-quality, often music.",
     "aliases": []
+  },
+  {
+    "word": "Bars",
+    "definition": "Excellent rap lyrics, or a clever line in general.",
+    "aliases": [
+      "bar"
+    ]
   },
   {
     "word": "Based",
@@ -43,6 +73,18 @@
     "word": "BDE",
     "definition": "Big dick energy; exuding confidence and ease.",
     "aliases": []
+  },
+  {
+    "word": "Bean soup theory",
+    "definition": "Making an unrelated post or topic all about yourself.",
+    "aliases": []
+  },
+  {
+    "word": "Beige flag",
+    "definition": "A quirky trait that is neither good nor bad.",
+    "aliases": [
+      "beige flags"
+    ]
   },
   {
     "word": "Bestie",
@@ -62,6 +104,18 @@
     "aliases": []
   },
   {
+    "word": "Big back",
+    "definition": "Someone overweight or always eating; also an urge to eat a lot.",
+    "aliases": [
+      "big backs"
+    ]
+  },
+  {
+    "word": "Big yahu",
+    "definition": "Joking nickname for Benjamin Netanyahu.",
+    "aliases": []
+  },
+  {
     "word": "Big yikes",
     "definition": "Describing something embarrassing or cringey.",
     "aliases": []
@@ -70,6 +124,13 @@
     "word": "Blud",
     "definition": "Another word for friend or bro, often describing out-of-place people or animals.",
     "aliases": []
+  },
+  {
+    "word": "Bop",
+    "definition": "A derogatory word for a woman seen as promiscuous; also a catchy song.",
+    "aliases": [
+      "bops"
+    ]
   },
   {
     "word": "Boujee",
@@ -92,6 +153,11 @@
     "aliases": []
   },
   {
+    "word": "Buns",
+    "definition": "Bad or low quality.",
+    "aliases": []
+  },
+  {
     "word": "Bussin'",
     "definition": "Extremely good or excellent, often describing food.",
     "aliases": [
@@ -103,6 +169,13 @@
     "word": "Bussy",
     "definition": "Portmanteau of 'Boy' and 'Pussy', referring to a man's anus.",
     "aliases": []
+  },
+  {
+    "word": "Canon",
+    "definition": "Jokingly, something that counts as officially true or a defining event in someone's life.",
+    "aliases": [
+      "canon event"
+    ]
   },
   {
     "word": "Cap",
@@ -119,9 +192,28 @@
     "aliases": []
   },
   {
+    "word": "Cheugy",
+    "definition": "Uncool because of clinging to outdated trends.",
+    "aliases": []
+  },
+  {
     "word": "Chopped",
     "definition": "Ugly or unattractive.",
     "aliases": []
+  },
+  {
+    "word": "Chud",
+    "definition": "An insult for a rude, foolish, or unpleasant person.",
+    "aliases": [
+      "chuds"
+    ]
+  },
+  {
+    "word": "Clanker",
+    "definition": "An insulting name for AI, robots, and similar technology.",
+    "aliases": [
+      "clankers"
+    ]
   },
   {
     "word": "Clapback",
@@ -143,12 +235,30 @@
     "aliases": []
   },
   {
+    "word": "Coworker music",
+    "definition": "Generic, inoffensive music, like what coworkers play.",
+    "aliases": []
+  },
+  {
+    "word": "Cracked",
+    "definition": "Extremely skilled at something, especially games; also slang for having sex.",
+    "aliases": []
+  },
+  {
     "word": "Crash out",
     "definition": "To lose control and react recklessly after getting upset.",
     "aliases": [
       "crashing out",
       "crashed out",
       "crashout"
+    ]
+  },
+  {
+    "word": "Crine",
+    "definition": "Crying, as in laughing so hard you're crying.",
+    "aliases": [
+      "im crine",
+      "i'm crine"
     ]
   },
   {
@@ -175,6 +285,16 @@
     "aliases": []
   },
   {
+    "word": "Delusionship",
+    "definition": "A relationship that exists mostly in someone's imagination.",
+    "aliases": []
+  },
+  {
+    "word": "Dih",
+    "definition": "Algospeak for 'dick'.",
+    "aliases": []
+  },
+  {
     "word": "Dogs",
     "definition": "Slang term for toes.",
     "aliases": []
@@ -183,6 +303,13 @@
     "word": "Drip",
     "definition": "Trendy, high-class fashion.",
     "aliases": []
+  },
+  {
+    "word": "Edging",
+    "definition": "Delaying climax on purpose; figuratively, putting off a goal for too long.",
+    "aliases": [
+      "edged"
+    ]
   },
   {
     "word": "Era",
@@ -195,9 +322,24 @@
     "aliases": []
   },
   {
+    "word": "Face card",
+    "definition": "An attractive face that never fails.",
+    "aliases": [
+      "face card never declines"
+    ]
+  },
+  {
     "word": "Fanum tax",
     "definition": "The theft of food between friends.",
     "aliases": []
+  },
+  {
+    "word": "Fine shyt",
+    "definition": "A very attractive person.",
+    "aliases": [
+      "fine shi",
+      "fs"
+    ]
   },
   {
     "word": "Finna",
@@ -223,6 +365,11 @@
     ]
   },
   {
+    "word": "Flop era",
+    "definition": "A period of low engagement, failures, or lost relevance.",
+    "aliases": []
+  },
+  {
     "word": "Fr",
     "definition": "For real; emphasizing sincerity or agreement.",
     "aliases": [
@@ -231,8 +378,37 @@
     ]
   },
   {
+    "word": "Friendslop",
+    "definition": "Low-effort multiplayer games that are fun mostly because you play with friends.",
+    "aliases": []
+  },
+  {
+    "word": "Frying me",
+    "definition": "Making me laugh hard (or stressing me out), as in 'ts frying me'.",
+    "aliases": [
+      "ts frying me"
+    ]
+  },
+  {
+    "word": "Function",
+    "definition": "A party or social gathering.",
+    "aliases": [
+      "functions"
+    ]
+  },
+  {
     "word": "Gagged",
     "definition": "Being shocked, amazed, or at a loss for words.",
+    "aliases": []
+  },
+  {
+    "word": "Gas",
+    "definition": "Really good or entertaining.",
+    "aliases": []
+  },
+  {
+    "word": "Geeked",
+    "definition": "High on drugs, or extremely excited.",
     "aliases": []
   },
   {
@@ -259,7 +435,7 @@
   },
   {
     "word": "Glizzy",
-    "definition": "A hot dog.",
+    "definition": "A hot dog; also slang for a Glock pistol or a penis.",
     "aliases": []
   },
   {
@@ -271,10 +447,51 @@
     ]
   },
   {
+    "word": "Gng",
+    "definition": "Gang; a close group of friends.",
+    "aliases": []
+  },
+  {
     "word": "GOAT",
     "definition": "Greatest of all time.",
     "aliases": [
       "goated"
+    ]
+  },
+  {
+    "word": "Good boy",
+    "definition": "Mocking praise for someone doing what they were told.",
+    "aliases": [
+      "good girl"
+    ]
+  },
+  {
+    "word": "Goofy ahh",
+    "definition": "Goofy or silly; 'ahh' stands in for 'ass'.",
+    "aliases": [
+      "goofy ah"
+    ]
+  },
+  {
+    "word": "Gooning",
+    "definition": "Prolonged, obsessive masturbation, often while binging porn; also used loosely for zoning out on content.",
+    "aliases": [
+      "goon",
+      "gooner",
+      "gooners",
+      "gooned"
+    ]
+  },
+  {
+    "word": "Grape",
+    "definition": "Algospeak for 'rape', used to get past content moderation.",
+    "aliases": []
+  },
+  {
+    "word": "Green flag",
+    "definition": "A positive, healthy trait in a person or relationship.",
+    "aliases": [
+      "green flags"
     ]
   },
   {
@@ -286,6 +503,25 @@
     "word": "Gyatt",
     "definition": "Short for 'God Damn', often referring to a curvy woman's buttocks.",
     "aliases": []
+  },
+  {
+    "word": "Hawk tuah",
+    "definition": "Onomatopoeia for spitting during oral sex, from Haliey Welch's viral street interview.",
+    "aliases": []
+  },
+  {
+    "word": "Hg",
+    "definition": "Homegirl or homeboy; a friend.",
+    "aliases": [
+      "hb"
+    ]
+  },
+  {
+    "word": "High cortisol",
+    "definition": "Stressed or anxious.",
+    "aliases": [
+      "high-cortisol"
+    ]
   },
   {
     "word": "Highkey",
@@ -303,6 +539,11 @@
     ]
   },
   {
+    "word": "Huzz",
+    "definition": "An attractive woman or group of women (from 'hoes'), popularized by Kai Cenat.",
+    "aliases": []
+  },
+  {
     "word": "I oop",
     "definition": "Expressing shock, embarrassment, or amusement.",
     "aliases": []
@@ -310,6 +551,11 @@
   {
     "word": "Ick",
     "definition": "Sudden feeling of disgust towards a dating partner.",
+    "aliases": []
+  },
+  {
+    "word": "Icl",
+    "definition": "I can't lie; introducing an honest opinion.",
     "aliases": []
   },
   {
@@ -326,6 +572,14 @@
     "word": "It's giving",
     "definition": "Describing the attitude or connotation of something.",
     "aliases": []
+  },
+  {
+    "word": "It's joever",
+    "definition": "It's over; total defeat.",
+    "aliases": [
+      "its joever",
+      "joever"
+    ]
   },
   {
     "word": "Iykyk",
@@ -345,13 +599,99 @@
     "aliases": []
   },
   {
+    "word": "Khia",
+    "definition": "An artist or person nobody pays attention to.",
+    "aliases": []
+  },
+  {
+    "word": "Kirked",
+    "definition": "Meme verb from Charlie Kirk's killing: shot in the neck, or crudely, receiving oral sex.",
+    "aliases": [
+      "kirk",
+      "kirking"
+    ]
+  },
+  {
+    "word": "Kirkifying",
+    "definition": "Putting Charlie Kirk's face onto memes with deepfakes.",
+    "aliases": [
+      "kirkified",
+      "kirkify"
+    ]
+  },
+  {
+    "word": "KMS",
+    "definition": "'Kill myself'; usually exaggeration for embarrassment or frustration.",
+    "aliases": []
+  },
+  {
+    "word": "KYS",
+    "definition": "'Kill yourself'; a hostile insult. Sometimes reframed as 'keep yourself safe'.",
+    "aliases": []
+  },
+  {
+    "word": "L",
+    "definition": "A loss or failure.",
+    "aliases": [
+      "took an l",
+      "take the l",
+      "big l"
+    ]
+  },
+  {
+    "word": "Larp",
+    "definition": "To pretend to be someone you're not; a poser or try-hard.",
+    "aliases": [
+      "larping",
+      "larper",
+      "larpers"
+    ]
+  },
+  {
+    "word": "Ligma",
+    "definition": "Setup for the joke 'ligma balls' ('lick my balls').",
+    "aliases": [
+      "ligma balls"
+    ]
+  },
+  {
     "word": "Lit",
     "definition": "Exciting, enjoyable, or excellent.",
     "aliases": []
   },
   {
+    "word": "Locked in",
+    "definition": "Fully focused on a task.",
+    "aliases": [
+      "lock in",
+      "locking in",
+      "lockin"
+    ]
+  },
+  {
     "word": "Looksmaxxing",
     "definition": "Attempts to maximize physical attractiveness, often pseudoscientific.",
+    "aliases": []
+  },
+  {
+    "word": "Lore dump",
+    "definition": "Explaining your whole backstory or a long history all at once.",
+    "aliases": [
+      "lore-dump",
+      "lore dumping",
+      "lore-dumping"
+    ]
+  },
+  {
+    "word": "Low cortisol",
+    "definition": "Relaxed and stress-free.",
+    "aliases": [
+      "low-cortisol"
+    ]
+  },
+  {
+    "word": "Lowkenuinely",
+    "definition": "Lowkey + genuinely; saying something sincerely.",
     "aliases": []
   },
   {
@@ -360,6 +700,11 @@
     "aliases": [
       "low key"
     ]
+  },
+  {
+    "word": "Lowkirkenuinely",
+    "definition": "Ironic blend of lowkey, Kirk and genuinely, said with fake sincerity.",
+    "aliases": []
   },
   {
     "word": "Main character",
@@ -384,8 +729,10 @@
     "word": "Mog",
     "definition": "To outshine someone, especially in looks.",
     "aliases": [
-      "mogging",
+      "framemog",
+      "framemogged",
       "mogged",
+      "mogging",
       "mogs"
     ]
   },
@@ -397,13 +744,45 @@
     ]
   },
   {
+    "word": "Moving",
+    "definition": "How someone acts or carries themselves, as in 'how I be moving'.",
+    "aliases": [
+      "how i be moving"
+    ]
+  },
+  {
+    "word": "Nepo baby",
+    "definition": "Someone whose success comes from famous or wealthy parents.",
+    "aliases": [
+      "nepo babies"
+    ]
+  },
+  {
     "word": "Netflix and chill",
     "definition": "Invitation for casual sexual activity under the guise of watching Netflix.",
     "aliases": []
   },
   {
+    "word": "Neuron activation",
+    "definition": "A sudden excited reaction to something familiar.",
+    "aliases": []
+  },
+  {
     "word": "Ngl",
     "definition": "Not gonna lie; introducing an honest opinion.",
+    "aliases": []
+  },
+  {
+    "word": "Nostalgia bait",
+    "definition": "Content that exploits fond childhood memories for engagement.",
+    "aliases": [
+      "nostalgia-bait",
+      "nostalgia baiting"
+    ]
+  },
+  {
+    "word": "Nothing ever happens",
+    "definition": "Dismissing hyped news as something that won't actually matter.",
     "aliases": []
   },
   {
@@ -414,6 +793,11 @@
   {
     "word": "Nyaa",
     "definition": "Cute cat noise, often used ironically.",
+    "aliases": []
+  },
+  {
+    "word": "Oh that's not",
+    "definition": "A reaction to something cringe or offensive.",
     "aliases": []
   },
   {
@@ -443,7 +827,7 @@
   },
   {
     "word": "Opp",
-    "definition": "Short for opposition or enemies.",
+    "definition": "An opponent or enemy; crudely, 'other people's pussy'.",
     "aliases": [
       "opps"
     ]
@@ -457,6 +841,18 @@
     "word": "Owned",
     "definition": "Decisively defeated or dominated, especially in gaming.",
     "aliases": []
+  },
+  {
+    "word": "Peak",
+    "definition": "Of exceptional quality; the best.",
+    "aliases": []
+  },
+  {
+    "word": "Performative male",
+    "definition": "A man who shows off progressive or 'soft' tastes to seem attractive.",
+    "aliases": [
+      "performative men"
+    ]
   },
   {
     "word": "Periodt",
@@ -474,6 +870,19 @@
     "aliases": []
   },
   {
+    "word": "Pmo",
+    "definition": "Pisses me off.",
+    "aliases": [
+      "ts pmo",
+      "ts pmo icl"
+    ]
+  },
+  {
+    "word": "Polyester",
+    "definition": "Fake, inauthentic, or low quality.",
+    "aliases": []
+  },
+  {
     "word": "Pookie",
     "definition": "Endearing nickname for a close friend or lover.",
     "aliases": [
@@ -481,14 +890,29 @@
     ]
   },
   {
+    "word": "Pushing P",
+    "definition": "Acting with integrity and style while showing success.",
+    "aliases": []
+  },
+  {
     "word": "Queen",
     "definition": "A person (usually female) deemed impressive or praiseworthy.",
     "aliases": []
   },
   {
+    "word": "Rage bait",
+    "definition": "Content made on purpose to provoke anger for engagement.",
+    "aliases": [
+      "rage-bait",
+      "ragebait"
+    ]
+  },
+  {
     "word": "Ratio",
     "definition": "When a reply outperforms the original post in engagement.",
     "aliases": [
+      "l + ratio",
+      "l+ratio",
       "ratioed"
     ]
   },
@@ -506,9 +930,12 @@
     "word": "Rizz",
     "definition": "One's charm or seduction skills.",
     "aliases": [
+      "l rizz",
       "rizzed",
+      "rizzing",
       "rizzler",
-      "rizzing"
+      "unspoken rizz",
+      "w rizz"
     ]
   },
   {
@@ -527,6 +954,13 @@
     "aliases": []
   },
   {
+    "word": "Serving cunt",
+    "definition": "Being bold, confident, and fiercely feminine; very complimentary.",
+    "aliases": [
+      "serving c"
+    ]
+  },
+  {
     "word": "Sheesh",
     "definition": "Expressing admiration or disbelief.",
     "aliases": []
@@ -535,6 +969,13 @@
     "word": "Shook",
     "definition": "Shocked, surprised, or bothered.",
     "aliases": []
+  },
+  {
+    "word": "Side quest",
+    "definition": "A random, unplanned detour or activity in daily life.",
+    "aliases": [
+      "side quests"
+    ]
   },
   {
     "word": "Sigma",
@@ -557,6 +998,11 @@
   {
     "word": "Skibidi",
     "definition": "Nonce word used for comedic or exaggerating effect.",
+    "aliases": []
+  },
+  {
+    "word": "Skill issue",
+    "definition": "A failure blamed on someone's lack of ability.",
     "aliases": []
   },
   {
@@ -587,6 +1033,13 @@
     ]
   },
   {
+    "word": "Slop",
+    "definition": "Low-quality, mass-produced content, especially AI-generated.",
+    "aliases": [
+      "ai slop"
+    ]
+  },
+  {
     "word": "Snatched",
     "definition": "Looking exceptionally good or stylish.",
     "aliases": []
@@ -605,6 +1058,21 @@
     "aliases": []
   },
   {
+    "word": "Sussy baka",
+    "definition": "A silly suspicious person; 'sus' plus Japanese 'baka' (fool).",
+    "aliases": []
+  },
+  {
+    "word": "Sybau",
+    "definition": "'Shut your bitch ass up.'",
+    "aliases": []
+  },
+  {
+    "word": "Syfm",
+    "definition": "'Shut your fucking mouth.'",
+    "aliases": []
+  },
+  {
     "word": "Tea",
     "definition": "Gossip or drama.",
     "aliases": []
@@ -617,10 +1085,49 @@
     ]
   },
   {
+    "word": "Truth nuke",
+    "definition": "A blunt, impactful truth or opinion.",
+    "aliases": []
+  },
+  {
+    "word": "Ts",
+    "definition": "Short for 'this shit' or 'type shit', used to react to something.",
+    "aliases": [
+      "type shi",
+      "type shit"
+    ]
+  },
+  {
+    "word": "Tuff",
+    "definition": "Cool or impressive.",
+    "aliases": []
+  },
+  {
     "word": "Tweaking",
     "definition": "Acting strangely or feeling like you're hallucinating.",
     "aliases": [
       "tweakin"
+    ]
+  },
+  {
+    "word": "Twin",
+    "definition": "A close friend, or someone very similar to you.",
+    "aliases": []
+  },
+  {
+    "word": "Unalive",
+    "definition": "Euphemism for kill or die, used to avoid content moderation.",
+    "aliases": [
+      "unalived",
+      "unaliving",
+      "unalive myself"
+    ]
+  },
+  {
+    "word": "Unc",
+    "definition": "Someone seen as old or out of touch; sometimes an older person who's still cool.",
+    "aliases": [
+      "uncs"
     ]
   },
   {
@@ -636,9 +1143,24 @@
     "aliases": []
   },
   {
+    "word": "Vaguepost",
+    "definition": "A cryptic social media post meant to get attention.",
+    "aliases": [
+      "vagueposting"
+    ]
+  },
+  {
     "word": "Valid",
     "definition": "Acceptable or worthy of approval.",
     "aliases": []
+  },
+  {
+    "word": "Vibe",
+    "definition": "A feeling or atmosphere.",
+    "aliases": [
+      "vibes",
+      "vibing"
+    ]
   },
   {
     "word": "Vibe check",
@@ -648,6 +1170,19 @@
   {
     "word": "VSCO girl",
     "definition": "Stereotype of a trendy, basic white girl who posts edited photos online.",
+    "aliases": []
+  },
+  {
+    "word": "W",
+    "definition": "A win or success.",
+    "aliases": [
+      "dub",
+      "big w"
+    ]
+  },
+  {
+    "word": "Washed",
+    "definition": "No longer as good, popular, or skilled as before.",
     "aliases": []
   },
   {
@@ -664,10 +1199,31 @@
     ]
   },
   {
+    "word": "Yassify",
+    "definition": "To make something look overly glamorous, like with beauty filters.",
+    "aliases": [
+      "yassified"
+    ]
+  },
+  {
     "word": "Yeet",
     "definition": "To throw forcefully; also a general exclamation.",
     "aliases": [
       "yeeted"
+    ]
+  },
+  {
+    "word": "You good",
+    "definition": "A casual check-in: 'are you okay?'",
+    "aliases": [
+      "u good"
+    ]
+  },
+  {
+    "word": "Zaza",
+    "definition": "Cannabis, especially high-quality.",
+    "aliases": [
+      "za"
     ]
   },
   {

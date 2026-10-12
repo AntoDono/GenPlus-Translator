@@ -184,9 +184,11 @@ Answers: 1-3 sentences, plain English, accurate to the definition, and include a
 Return {{"items": [{{"question": "...", "answer": "..."}}, ...]}}"""
 
 
-async def generate_define(per_word: int):
+async def generate_define(per_word: int, only: list | None = None):
     vocab = load_vocab()
     matcher = TermMatcher(vocab)
+    if only:
+        vocab = [t for t in vocab if t["word"] in only]
     existing = read_jsonl(DEFINE_PATH)
     counts = {}
     for row in existing:
@@ -228,6 +230,16 @@ async def generate_define(per_word: int):
 
 # ---------------------------------------------------------------- build dataset
 
+DEFINITION_QUESTIONS = [
+    'What does "{w}" mean?',
+    "define {w}",
+    "{w} meaning?",
+    'What is "{w}" in slang?',
+    'What do people mean when they say "{w}"?',
+    "what's {w}",
+]
+
+
 def normalize(s: str) -> str:
     return re.sub(r"[^a-z0-9 ]", "", s.lower()).strip()
 
@@ -254,9 +266,21 @@ async def near_dupes(texts, threshold=0.95):
     return drop
 
 
-async def build(use_embeddings: bool):
+def legacy_pairs(matcher):
+    """v1 data (data/generated-10000.json), re-tagged with word-boundary matching."""
+    rows = []
+    for p in read_json("./data/generated-10000.json"):
+        terms = matcher.words(p["translated"])
+        if terms:
+            rows.append(dict(original=p["original"], slang=p["translated"], terms=terms))
+    return rows
+
+
+async def build(use_embeddings: bool, include_legacy: bool):
     vocab = load_vocab()
     pairs = read_jsonl(PAIRS_PATH)
+    if include_legacy:
+        pairs += legacy_pairs(TermMatcher(vocab))
     seen, uniq = set(), []
     for p in pairs:
         key = normalize(p["original"])
@@ -292,10 +316,11 @@ async def build(use_embeddings: bool):
         for d in qa_splits[split]:
             rows.append(dict(task="define", input=d["question"], output=d["answer"], terms=[d["word"]]))
         if split == "train":
-            # Anchor every term to its dictionary definition
+            # Anchor every term to its exact dictionary definition, under several phrasings
             for t in vocab:
-                rows.append(dict(task="define", input=f'What does "{t["word"]}" mean?',
-                                 output=f'"{t["word"]}" means: {t["definition"]}', terms=[t["word"]]))
+                for q in DEFINITION_QUESTIONS:
+                    rows.append(dict(task="define", input=q.format(w=t["word"]),
+                                     output=f'"{t["word"]}" means: {t["definition"]}', terms=[t["word"]]))
         random.shuffle(rows)
         write_jsonl(f"./data/{split}.jsonl", rows)
         counts = {}
@@ -311,8 +336,10 @@ if __name__ == "__main__":
     p.add_argument("--n", type=int, default=6000)
     d = sub.add_parser("define")
     d.add_argument("--per-word", type=int, default=16)
+    d.add_argument("--words", nargs="*", help="only these terms (default: all)")
     b = sub.add_parser("build")
     b.add_argument("--no-embed", action="store_true", help="skip bge-m3 near-duplicate filtering")
+    b.add_argument("--include-legacy", action="store_true", help="also use the v1 generated-10000.json pairs")
     parser.add_argument("--seed", type=int, default=7777)
     args = parser.parse_args()
 
@@ -320,7 +347,7 @@ if __name__ == "__main__":
     if args.cmd == "pairs":
         asyncio.run(generate_pairs(args.n))
     elif args.cmd == "define":
-        asyncio.run(generate_define(args.per_word))
+        asyncio.run(generate_define(args.per_word, args.words))
     else:
         random.seed(args.seed)  # reproducible splits; generation stays unseeded so resumes don't repeat specs
-        asyncio.run(build(use_embeddings=not args.no_embed))
+        asyncio.run(build(use_embeddings=not args.no_embed, include_legacy=args.include_legacy))
