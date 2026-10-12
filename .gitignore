@@ -1,3 +1,10 @@
 venv
-
+.venv
 model
+runs/
+__pycache__/
+
+# secrets / local config
+.env
+.env.*
+!.env.example
