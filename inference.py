@@ -1,10 +1,13 @@
+import os
 from typing import List
 
-import torch
-from peft import PeftModel
-from transformers import AutoModelForCausalLM, AutoTokenizer
+os.environ.setdefault("CUDA_DEVICE_ORDER", "PCI_BUS_ID")  # cuda:N matches nvidia-smi
 
-from common import build_prompt
+import torch  # noqa: E402
+from peft import PeftModel  # noqa: E402
+from transformers import AutoModelForCausalLM, AutoTokenizer  # noqa: E402
+
+from common import build_prompt  # noqa: E402
 
 
 def load_model(base: str, adapter: str | None, device: str):

@@ -10,12 +10,7 @@ import argparse
 import os
 import random
 
-import torch
 from dotenv import load_dotenv
-from peft import LoraConfig, TaskType, get_peft_model
-from transformers import AutoModelForCausalLM, AutoTokenizer, Trainer, TrainingArguments
-
-from common import build_prompt, read_jsonl
 
 load_dotenv(override=True)
 
@@ -30,6 +25,19 @@ parser.add_argument("--rank", type=int, default=32)
 parser.add_argument("--eval-steps", type=int, default=200)
 parser.add_argument("--output", default="./adapter")
 args = parser.parse_args()
+
+# Expose only the chosen GPU. Otherwise Trainer spreads over every visible GPU (DataParallel),
+# including ones that are already full. Index matches nvidia-smi.
+os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
+if args.device.startswith("cuda:"):
+    os.environ["CUDA_VISIBLE_DEVICES"] = args.device.split(":")[1]
+    args.device = "cuda:0"
+
+import torch  # noqa: E402  (after CUDA_VISIBLE_DEVICES)
+from peft import LoraConfig, TaskType, get_peft_model  # noqa: E402
+from transformers import AutoModelForCausalLM, AutoTokenizer, Trainer, TrainingArguments  # noqa: E402
+
+from common import build_prompt, read_jsonl  # noqa: E402
 
 random.seed(12345)
 torch.manual_seed(12345)
