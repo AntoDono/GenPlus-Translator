@@ -9,7 +9,7 @@ import os
 
 from dotenv import load_dotenv
 
-from common import TASKS
+from common import TASKS, adapter_dir
 from inference import load_model, run_task
 
 load_dotenv(override=True)
@@ -17,10 +17,11 @@ load_dotenv(override=True)
 parser = argparse.ArgumentParser()
 parser.add_argument("--task", choices=list(TASKS), default="en-to-slang")
 parser.add_argument("--model", default=os.getenv("BASE_MODEL", "gpt2-large"))
-parser.add_argument("--adapter", default="./adapter")
+parser.add_argument("--adapter", default=None, help="default: ./adapters/<model name>")
 parser.add_argument("--device", default=os.getenv("DEVICE", "cuda:0"))
 parser.add_argument("--sample", action="store_true", help="sample instead of greedy decoding")
 args = parser.parse_args()
+args.adapter = args.adapter or adapter_dir(args.model)
 
 model, tokenizer = load_model(args.model, args.adapter, args.device)
 

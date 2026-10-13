@@ -49,11 +49,12 @@ python data_generation.py define --per-word 16   # Q&A about each term
 python data_generation.py pairs --n 6000         # translation pairs
 python data_generation.py build                  # dedupe + split into data/{train,val,test}.jsonl
 ```
-4. Fine-tune. The adapter is saved to `./adapter`:
+4. Fine-tune. The adapter is saved to `./adapters/<model name>` (e.g. `adapters/gpt2-large`):
 ```bash
-python finetune.py
+python finetune.py                          # BASE_MODEL from .env
+python finetune.py --model Qwen/Qwen3-0.6B  # -> adapters/qwen3-0.6b
 ```
-5. Evaluate on the held-out test set (chrF, slang usage, leftover slang, definition accuracy):
+5. Evaluate on the held-out test set (chrF, slang usage, leftover slang, definition accuracy). Pass the same `--model` you trained:
 ```bash
 python eval.py
 ```

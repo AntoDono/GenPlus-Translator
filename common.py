@@ -37,6 +37,11 @@ def write_jsonl(path: str, rows: List[Dict]) -> None:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
 
+def adapter_dir(model: str) -> str:
+    """Default adapter location for a base model, e.g. Qwen/Qwen3-0.6B -> ./adapters/qwen3-0.6b"""
+    return f"./adapters/{model.split('/')[-1].lower()}"
+
+
 def load_vocab(path: str = "./vocabulary.json") -> List[Dict]:
     return read_json(path)
 

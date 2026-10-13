@@ -5,12 +5,15 @@ Loss is computed only on the response tokens, never on the prompt or padding.
 
     python finetune.py                     # BASE_MODEL from .env
     python finetune.py --epochs 3 --lr 2e-4
+    python finetune.py --model Qwen/Qwen3-0.6B   # -> ./adapters/qwen3-0.6b
 """
 import argparse
 import os
 import random
 
 from dotenv import load_dotenv
+
+from common import adapter_dir
 
 load_dotenv(override=True)
 
@@ -23,8 +26,9 @@ parser.add_argument("--batch-size", type=int, default=16)
 parser.add_argument("--max-length", type=int, default=256)
 parser.add_argument("--rank", type=int, default=32)
 parser.add_argument("--eval-steps", type=int, default=200)
-parser.add_argument("--output", default="./adapter")
+parser.add_argument("--output", default=None, help="default: ./adapters/<model name>")
 args = parser.parse_args()
+args.output = args.output or adapter_dir(args.model)
 
 # Expose only the chosen GPU. Otherwise Trainer spreads over every visible GPU (DataParallel),
 # including ones that are already full. Index matches nvidia-smi.

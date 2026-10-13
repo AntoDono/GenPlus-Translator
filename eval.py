@@ -1,7 +1,7 @@
 """Score a model + adapter on data/test.jsonl.
 
-    python eval.py                                   # current adapter
-    python eval.py --model meta-llama/Llama-3.2-1B --adapter ./old-adapter --legacy   # old prompt format
+    python eval.py                              # BASE_MODEL from .env, ./adapters/<model name>
+    python eval.py --model Qwen/Qwen3-0.6B
 
 Metrics per task:
   chrF          character n-gram F-score against the reference (higher = closer)
@@ -17,31 +17,26 @@ import random
 from dotenv import load_dotenv
 from sacrebleu.metrics import CHRF
 
-from common import TermMatcher, load_vocab, read_jsonl
-from inference import generate, load_model, run_task
+from common import TermMatcher, adapter_dir, load_vocab, read_jsonl
+from inference import load_model, run_task
 
 load_dotenv(override=True)
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--model", default=os.getenv("BASE_MODEL", "gpt2-large"))
-parser.add_argument("--adapter", default="./adapter")
+parser.add_argument("--adapter", default=None, help="default: ./adapters/<model name>")
 parser.add_argument("--device", default=os.getenv("DEVICE", "cuda:0"))
 parser.add_argument("--n", type=int, default=200, help="examples per task")
 parser.add_argument("--batch-size", type=int, default=16)
-parser.add_argument("--legacy", action="store_true", help="v1 prompt format (no define task)")
 parser.add_argument("--out", default=None, help="write predictions to this JSONL")
 args = parser.parse_args()
-
-LEGACY_INSTRUCTIONS = {
-    "en-to-slang": "Rewrite the following english sentence to slang and identify the words replaced.",
-    "slang-to-en": "Rewrite the following slang sentence to english and identify the words replaced.",
-}
+args.adapter = args.adapter or adapter_dir(args.model)
 
 random.seed(0)
 matcher = TermMatcher(load_vocab())
 model, tokenizer = load_model(args.model, args.adapter, args.device)
 rows = read_jsonl("./data/test.jsonl")
-tasks = ["en-to-slang", "slang-to-en"] + ([] if args.legacy else ["define"])
+tasks = ["en-to-slang", "slang-to-en", "define"]
 
 report, dump = {}, []
 for task in tasks:
@@ -50,12 +45,7 @@ for task in tasks:
     preds = []
     for i in range(0, len(subset), args.batch_size):
         batch = [r["input"] for r in subset[i:i + args.batch_size]]
-        if args.legacy:
-            prompts = [f"{LEGACY_INSTRUCTIONS[task]}\nInput: {t}\nOutput: " for t in batch]
-            outs = generate(model, tokenizer, prompts)
-            preds += [o.split("Words replaced")[0].strip() for o in outs]
-        else:
-            preds += run_task(model, tokenizer, task, batch)
+        preds += run_task(model, tokenizer, task, batch)
 
     refs = [r["output"] for r in subset]
     scores = dict(n=len(subset), chrF=round(CHRF().corpus_score(preds, [refs]).score, 1))

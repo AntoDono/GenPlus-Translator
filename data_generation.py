@@ -266,21 +266,9 @@ async def near_dupes(texts, threshold=0.95):
     return drop
 
 
-def legacy_pairs(matcher):
-    """v1 data (data/generated-10000.json), re-tagged with word-boundary matching."""
-    rows = []
-    for p in read_json("./data/generated-10000.json"):
-        terms = matcher.words(p["translated"])
-        if terms:
-            rows.append(dict(original=p["original"], slang=p["translated"], terms=terms))
-    return rows
-
-
-async def build(use_embeddings: bool, include_legacy: bool):
+async def build(use_embeddings: bool):
     vocab = load_vocab()
     pairs = read_jsonl(PAIRS_PATH)
-    if include_legacy:
-        pairs += legacy_pairs(TermMatcher(vocab))
     seen, uniq = set(), []
     for p in pairs:
         key = normalize(p["original"])
@@ -339,7 +327,6 @@ if __name__ == "__main__":
     d.add_argument("--words", nargs="*", help="only these terms (default: all)")
     b = sub.add_parser("build")
     b.add_argument("--no-embed", action="store_true", help="skip bge-m3 near-duplicate filtering")
-    b.add_argument("--include-legacy", action="store_true", help="also use the v1 generated-10000.json pairs")
     parser.add_argument("--seed", type=int, default=7777)
     args = parser.parse_args()
 
@@ -350,4 +337,4 @@ if __name__ == "__main__":
         asyncio.run(generate_define(args.per_word, args.words))
     else:
         random.seed(args.seed)  # reproducible splits; generation stays unseeded so resumes don't repeat specs
-        asyncio.run(build(use_embeddings=not args.no_embed, include_legacy=args.include_legacy))
+        asyncio.run(build(use_embeddings=not args.no_embed))
